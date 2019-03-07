@@ -1,0 +1,46 @@
+server:
+  port: 16066
+  servlet:
+    context-path: /jpa
+
+spring:
+  datasource:
+    druid:
+      driver-class-name: com.mysql.jdbc.Driver
+      username: root
+      password: admin123
+      url: jdbc:mysql://127.0.0.1:3306/mesmicroservice?useUnicode=true&characterEncoding=utf-8
+      #初始化大小
+      initial-size: 1
+      max-active: 20
+      min-idle: 1
+      #等待超时时间
+      max-wait: 60000
+      #打开PSCache 并指定每个连接上pscache的大小
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      validation-query: select 1
+      validation-query-timeout: 60000
+      test-on-borrow: false
+      test-on-return: false
+      test-while-idle: true
+      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      time-between-eviction-runs-millis: 60000
+      # 配置一个连接在池中最小生存的时间，单位是毫秒
+      min-evictable-idle-time-millis: 300000
+  jpa:
+    database: MYSQL
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+      hbm2ddl:
+        auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+
+
+
